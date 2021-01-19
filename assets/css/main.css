@@ -1,0 +1,501 @@
+/* Style par défaut de la police */
+@font-face {
+  font-family: "SourceSansPro";
+
+  src: url("../fonts/SourceSansPro-Regular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SourceSansPro-Regular.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+}
+/* Style bold lorsque le font-weight est sur bold*/
+@font-face {
+  font-family: "SourceSansPro";
+
+  src: url("../fonts/SourceSansPro-Bold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SourceSansPro-Bold.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: bold;
+}
+@font-face {
+  font-family: "SourceSansPro";
+
+  src: url("../fonts/SourceSansPro-SemiBold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/SourceSansPro-SemiBold.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: semiBold;
+}
+:root {
+        /* Les 2 - corresponde à l'initialisation des variable en CSS*/
+        --white : #fff;
+        --hover : #9bf1ff;
+        --main : #242943;
+        --secondary : #2a2f4a;
+        --navBk : rgba(36, 41, 67, 0.98);
+        --navLine : rgba(212, 212, 255, 0.1);
+
+        --color1 : #6fc3df;
+        --color2 : #8d82c4;
+        --color3 : #ec8d81;
+        --color4: #e7b788;
+        --color5 : #8ea9e8;
+        --color6: #87c5a4;
+
+        --footerCnt : rgba(244, 244, 255, 0.2);
+}
+html {
+        font-family: "SourceSansPro", serif;
+        font-size: 14px;
+        background: var(--main); /*Appeler une variable*/
+        color: var(--white);
+}
+a {
+        text-decoration: none;
+        color: inherit; /*Hérite de la couleur générale de la page*/
+}
+a:hover {
+        color: var(--hover);
+}
+/*************************/
+/*        HEADER         */
+/*************************/
+header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        font-weight: bold;
+        letter-spacing: 3px;
+}
+header h1 span {
+        background: var(--white);
+        color: var(--main);
+        display: inline-block;
+        padding: 2px 4px;
+}
+header h1:hover span {
+        background-color: var(--hover);
+}
+#burger {
+        background: none;
+        border: none;
+        letter-spacing: inherit;
+        text-transform: inherit;
+        font-weight: inherit;
+        font-size: 0.7rem;
+        color: inherit;
+        font-family: inherit;
+        display: flex;
+        flex-direction: row-reverse;
+}
+#close:hover,
+#burger:hover {
+        cursor: pointer;
+        color: var(--hover);
+}
+button::before {
+        font-family: "Font Awesome 5 Free";
+}
+#close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 2rem;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        overflow: hidden;
+}
+#close::before {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+}
+header nav {
+        display: none;
+        position: fixed;
+        background: var(--navBk);
+        top: 0;
+        left: 0;
+        z-index: 15;
+        width: 100vw; /**/
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+header nav ul {
+        width: 290px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+}
+header nav li {
+        margin-bottom: 2rem;
+}
+
+header nav button + ul li {
+        border-bottom: 1px solid var(--navLine);
+        padding-bottom: 2rem;
+}
+header nav ul .button {
+        width: 100%;
+}
+header nav button + ul li:last-child {
+        border-bottom: none;
+}
+.menuOpen {
+        overflow: hidden; /**Cacher la bar de scroll qd le menu est ouvert */
+}
+.menuOpen header nav {
+        display: flex;
+}
+.intro {
+        padding: 230px 40px 200px;
+        background: url("../img./banner.jpg") 50% 50%;
+        background-size: cover;
+        position: relative;
+}
+.intro > * {
+        position: relative;
+        z-index: 2;
+}
+.intro::after {
+        /* Création d'un bloc de design(faux contenu) qui sera en bleu et légèrement transparent*/
+        content: '';
+        background-color: var(--main);
+        opacity: 0.6;
+        /*On transforme cet element en bloc qui prend toute la dimension de son parent */
+        display: block;
+        width: 100%;
+        height: 100%;
+        /*On le positionne en le calant dans le coin haut gauche*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*On le met sur le calque numéro 1*/
+        z-index: 1;
+}
+.intro h1 {
+        font-size: 4.5rem;
+        padding: 30px 0;
+        margin-bottom: 30px;
+        border-bottom: 2px var(--white) solid;
+        font-weight: semiBold;
+}
+.intro div {
+        display: flex;
+        justify-content: space-between;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+}
+.intro div p {
+        width: 48%;
+}
+/*******************/
+/*     BOUTONS     */
+/*******************/
+.button {
+        border: 2px var(--white) solid;
+        padding: 10px 25px;
+        display: inline-block; /* Pour eviter qu'il mange sur les lignes du dessus ou du dessous*/
+        text-transform: uppercase;
+        background: none;
+        color: inherit;
+        letter-spacing: 2px;
+}
+.button:hover {
+        border-color: var(--hover);
+        color: var(--hover);
+}
+.full {
+        color: var(--main);
+        background: var(--white);
+}
+.full:hover {
+        background: var(--hover);
+        color: var(--main);
+}
+.arrow {
+        display: inline-flex;
+        align-items: center;
+        line-height: 24px;
+}
+.arrow:hover::after {
+        background: url("../img/arrow-blue.svg") no-repeat;
+}
+.arrow::after {
+        content: '';
+        display: inline-block;
+        width: 35px;
+        height: 24px;
+        background: url("../img/arrow-white.svg") no-repeat;
+        margin-left: 10px;
+}
+
+/***************/
+/*   ARTICLE   */
+/***************/
+.colors {
+        display: flex;
+        flex-wrap: wrap; /*Retourne a la ligne si nécessaire */
+}
+.colors article {
+        width: 40%;
+        background-repeat: no-repeat 50% 50%;
+        background-size: cover;
+        position: relative;
+        padding: 40px;
+        min-height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start
+}
+.colors article > * {
+        position: relative;
+        z-index: 2;
+}
+.colors article::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color6);
+        opacity: 0.8;
+        z-index: 1;
+        transition: opacity 0.5s;
+}
+.colors article:hover::after {
+        opacity: 0;
+}
+.colors h1 {
+        font-size: 2rem;
+        border-bottom: 2px var(--white) solid;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-right: 30px;
+}
+.colors p {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+}
+/* Mise en place des images sur les articles */
+.colors article:nth-child(6n+1) {
+        background-image: url("../img/pic01.jpg");
+}
+.colors article:nth-child(6n+2) {
+        background-image: url("../img/pic02.jpg");
+        width: 60%;
+}
+.colors article:nth-child(6n+3) {
+        background-image: url("../img/pic03.jpg");
+        width: 60%;
+}
+.colors article:nth-child(6n+4) {
+        background-image: url("../img/pic04.jpg");
+}
+.colors article:nth-child(6n+5) {
+        background-image: url("../img/pic05.jpg");
+}
+.colors article:nth-child(6n) {
+        background-image: url("../img/pic06.jpg");
+        width: 60%;
+}
+/* Mise en palce des voiles transparent au dessus des images */
+.colors article:nth-child(6n+1)::after {
+        background: var(--color1);
+}
+.colors article:nth-child(6n+2)::after {
+        background: var(--color2);
+}
+.colors article:nth-child(6n+3)::after {
+        background: var(--color3);
+}
+.colors article:nth-child(6n+4)::after {
+        background: var(--color4);
+}
+.colors article:nth-child(6n+5)::after {
+        background: var(--color5);
+}
+.colors article:nth-child(6n+1) {
+        background-image: url("../img/pic01.jpg");
+}
+.colors article:nth-child(6n+2) {
+        background-image: url("../img/pic02.jpg");
+        width: 60%;
+}
+.colors article:nth-child(6n+3) {
+        background-image: url("../img/pic03.jpg");
+        width: 60%;
+}
+.colors article:nth-child(6n+4) {
+        background-image: url("../img/pic04.jpg");
+}
+.colors article:nth-child(6n+5) {
+        background-image: url("../img/pic05.jpg");
+}
+
+/* ARTICLE DU DESSOUS */
+.single {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px 60px;
+        background: var(--secondary);
+}
+.single h1 {
+        font-size: 3rem;
+        font-family: inherit;
+        border-bottom: 2px var(--white) solid;
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+        padding-right: 40px;
+}
+.single p {
+        margin-bottom: 40px;
+        font-size: 1.3rem;
+        line-height: 2;
+}
+/******************************************/
+/*                FOOTER                  */
+/******************************************/
+footer article:first-child {
+        display: flex;
+        border-bottom: 2px var(--secondary) solid;
+}
+footer form {
+        width: 60%;
+        padding: 60px;
+        border-right: 2px var(--secondary) solid;
+}
+input,
+textarea {
+        background: var(--secondary);
+        color: var(--white);
+        font-family: inherit;
+        border: none;
+        padding: 10px;
+        width: 100%;
+}
+textarea {
+        resize: vertical;
+        min-height: 50px;
+}
+label {
+        letter-spacing: 2px;
+        display: block;
+        margin-bottom: 10px;
+}
+form p {
+        margin-bottom: 20px;
+}
+form div {
+        display: flex;
+        justify-content: space-between;
+}
+form div p {
+        width: 47%;
+}
+/* On parle a la liste qui est juste après le formulaire dans le footer via le + */
+footer form + ul {
+        width: 40%;
+}
+#contact {
+        display: flex;
+        flex-direction: column;
+}
+#contact li{
+        flex-grow: 1;
+        border-bottom: 2px var(--secondary) solid;
+        padding: 0 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.3rem;
+}
+.label {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-family: inherit;
+        position: relative;
+}
+
+.label::before {
+        font-family: "Font Awesome 5 Free";
+        position: absolute;
+        left: -60px;
+        top: -5px;
+        display: flex;
+        /*Centrer un élèment dans un flex*/
+        justify-content: center;
+        align-items: center;
+        /***************/
+        width: 40px;
+        height: 40px;
+        background: var(--white);
+        color: var(--main);
+        border-radius: 50%;
+}
+#contact li:last-child{
+        border-bottom: none;
+}
+/*** RESEAU SOCIAUX ***/
+footer article:last-child {
+        padding: 60px;
+}
+footer article:last-child ul {
+        display: flex;
+        flex-wrap: wrap;
+        color: black;
+        margin-bottom: 40px;
+}
+footer article:last-child li {
+        margin-right: 10px;
+}
+footer article:last-child ul:last-child {
+        margin-bottom: 0;
+        font-size: 0.9rem;
+        color: var(--footerCnt);
+}
+footer article:last-child ul:last-child {
+        margin-bottom: 0;
+        font-size: 0.9rem;
+        color: var(--footerCnt);
+}
+footer article:last-child ul:last-child li {
+        border-right: 1px solid var(--footerCnt);
+        padding-right: 30px;
+}
+footer article:last-child ul:last-child li:last-child {
+        border-right: none;
+        padding-right: O;
+}
+footer  article:last-child ul:last-child a {
+        border-bottom: 1px dashed var(--footerCnt);
+}
+footer  article:last-child ul:last-child a:hover {
+        border-bottom: none;
+}
+.social {
+        display: none;
+}
+footer .fab::before {
+        display: flex;
+        /*Centrer un élèment dans un flex*/
+        justify-content: center;
+        align-items: center;
+        /***************/
+        width: 30px;
+        height: 30px;
+        background: var(--white);
+        color: var(--main);
+        border-radius: 50%;
+        font-size: 1.2rem;
+}
+footer .fab:hover::before {
+        background: var(--hover);
+}
